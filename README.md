@@ -184,7 +184,7 @@ http://127.0.0.1:5000
 
 GitHub: https://github.com/meprashantak
 
-LinkedIn: *(Add your LinkedIn profile here)*
+LinkedIn: https://www.linkedin.com/in/prashant-kuchanure/
 
 ---
 
