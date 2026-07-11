@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - Plant Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="leaf-icon">
+                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                        <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+                    </svg>
+                </div>
+                <span class="logo-text">PlantCare AI</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><button id="theme-toggle" style="background:transparent; border:1px solid var(--border); border-radius:10px; padding:8px 12px; cursor:pointer; font-size: 1rem;" title="Toggle Dark Mode">🌙</button></li>
+                <li><a href="/upload" class="btn-nav">New Analysis</a></li>
+                <li style="margin-left: 10px; margin-top: 5px;">
+                    <div id="google_translate_element"></div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Results Section -->
+    <section class="result-page">
+        <div class="container">
+            <div class="result-header">
+                <h1 class="page-title">Analysis Complete</h1>
+                <p class="page-subtitle">Here's what we found</p>
+            </div>
+
+            <div class="result-container">
+                <!-- Uploaded Image -->
+                <div class="result-image-section">
+                    <h3>Uploaded Image</h3>
+                    <div class="result-image-card">
+                        <img src="{{ url_for('static', filename=image_path) }}" alt="Uploaded plant">
+                    </div>
+                </div>
+
+                <!-- Detection Result -->
+                <div class="result-detection">
+                    {% set primary = predictions[0] %}
+                    {% set parts = primary.class.split('___') %}
+                    {% set plant = parts[0] %}
+                    {% set disease = parts[1] if parts|length > 1 else 'Unknown' %}
+                    {% set is_healthy = 'healthy' in primary.class.lower() %}
+
+                    <div id="pdf-content" class="result-card-main {% if is_healthy %}healthy-result{% else %}disease-result{% endif %}">
+                        <div class="result-header-badge">
+                            <div class="status-badge {% if is_healthy %}status-healthy{% else %}status-disease{% endif %}">
+                                {% if is_healthy %}
+                                    ✓ Healthy Plant
+                                {% else %}
+                                    ⚠ Disease Detected
+                                {% endif %}
+                            </div>
+                            <div class="confidence-badge" style="background: #eef2ff; color: #4f46e5; padding: 6px 16px; border-radius: 20px; font-weight: 600; font-size: 0.9rem; border: 1px solid #c7d2fe; margin-left: 10px; display: inline-block;">
+                                {{ primary.confidence }}% Match
+                            </div>
+                        </div>
+                        
+                        <div class="result-icon">
+                            {% if is_healthy %}
+                            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            {% else %}
+                            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="15" y1="9" x2="9" y2="15"></line>
+                                <line x1="9" y1="9" x2="15" y2="15"></line>
+                            </svg>
+                            {% endif %}
+                        </div>
+
+                        <div class="result-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Plant Type</span>
+                                <h3 class="plant-name">{{ plant.replace('_', ' ') }}</h3>
+                            </div>
+                            <div class="detail-divider"></div>
+                            <div class="detail-item">
+                                <span class="detail-label">Condition</span>
+                                <h3 class="disease-name {% if is_healthy %}healthy-text{% else %}disease-text{% endif %}">
+                                    {{ disease.replace('_', ' ') }}
+                                </h3>
+                            </div>
+                        </div>
+
+                        {% if info %}
+                        <div class="disease-info-section" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0; text-align: left;">
+                            <h4 style="color: #1f2937; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+                                Description
+                            </h4>
+                            <p style="color: #4b5563; margin-bottom: 1.5rem; line-height: 1.6;">{{ info.description }}</p>
+                            
+                            <h4 style="color: #1f2937; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                Recommended Treatment
+                            </h4>
+                            <p style="color: #4b5563; margin-bottom: 1.5rem; white-space: pre-wrap; line-height: 1.6; padding-left: 10px; border-left: 3px solid #10b981;">{{ info.treatment }}</p>
+
+                            <h4 style="color: #1f2937; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                Prevention Strategies
+                            </h4>
+                            <p style="color: #4b5563; white-space: pre-wrap; line-height: 1.6; padding-left: 10px; border-left: 3px solid #f59e0b;">{{ info.prevention }}</p>
+                        </div>
+                        {% endif %}
+
+                    </div>
+
+                    <!-- Feedback Section -->
+                    <div class="feedback-section" style="margin-top: 2rem; background: var(--surface); padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow); border: 1px solid var(--border);">
+                        <h4 style="margin-bottom: 1rem; color: var(--text-primary); font-size: 1.1rem; display: flex; align-items: center; gap: 8px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                            Was this prediction accurate?
+                        </h4>
+                        <div id="feedback-success" style="display: none; color: #10b981; font-weight: 500; align-items: center; gap: 8px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                            Thank you for your feedback! This helps us improve our model.
+                        </div>
+                        <div id="feedback-actions" style="display: flex; gap: 10px;">
+                            <button onclick="submitFeedback('{{ primary.class }}')" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.95rem;">Yes, it's correct</button>
+                            <button onclick="document.getElementById('correction-form').style.display='block'; document.getElementById('feedback-actions').style.display='none';" class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.95rem;">No, it's something else</button>
+                        </div>
+                        
+                        <div id="correction-form" style="display: none; margin-top: 15px;">
+                            <p style="margin-bottom: 10px; color: var(--text-secondary);">Please select the correct condition:</p>
+                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                <select id="correct-class" style="padding: 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); color: var(--text-primary); flex: 1; min-width: 250px;">
+                                    <option value="">-- Select correct plant/disease --</option>
+                                    {% if all_classes %}
+                                        {% for class_name in all_classes %}
+                                            <option value="{{ class_name }}">{{ class_name.replace('___', ' - ').replace('_', ' ') }}</option>
+                                        {% endfor %}
+                                    {% endif %}
+                                </select>
+                                <button onclick="submitCorrection()" class="btn btn-primary" style="padding: 10px 20px;">Submit</button>
+                                <button onclick="document.getElementById('correction-form').style.display='none'; document.getElementById('feedback-actions').style.display='flex';" class="btn btn-secondary" style="padding: 10px 20px;">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="result-actions">
+                <button onclick="downloadPDF()" class="btn btn-primary btn-large" style="background-color: #3b82f6; border-color: #3b82f6; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download PDF Report
+                </button>
+                <a href="/upload" class="btn btn-primary btn-large">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    Analyze Another Image
+                </a>
+                <a href="/" class="btn btn-secondary btn-large">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+
+            <script type="text/javascript">
+                function googleTranslateElementInit() {
+                  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+                }
+            </script>
+            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+            <script>
+                // PDF Download function
+                function downloadPDF() {
+                    const originalTemplate = document.getElementById('pdf-report-template');
+                    const pdfContent = originalTemplate.cloneNode(true);
+                    pdfContent.style.display = 'block';
+
+                    const tempContainer = document.createElement('div');
+                    // Use position absolute aligned with the current scroll to avoid physical screen scaling clipping that happens with fixed position
+                    tempContainer.style.position = 'absolute';
+                    tempContainer.style.top = window.scrollY + 'px';
+                    tempContainer.style.left = '0';
+                    tempContainer.style.width = '100%';
+                    tempContainer.style.zIndex = '-9999';
+                    
+                    // Set current date
+                    const dateEl = pdfContent.querySelector('#pdf-date');
+                    if (dateEl) {
+                        dateEl.textContent = new Date().toLocaleDateString();
+                    }
+                    
+                    tempContainer.appendChild(pdfContent);
+                    document.body.appendChild(tempContainer);
+                    
+                    const options = {
+                        margin: [10, 10, 10, 10],
+                        filename: 'Plant_Disease_Report.pdf',
+                        image: { type: 'jpeg', quality: 0.98 },
+                        html2canvas: { scale: 2, useCORS: true, logging: false },
+                        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                        pagebreak: { mode: ['css', 'legacy'] }
+                    };
+                    
+                    html2pdf().set(options).from(pdfContent).toPdf().get('pdf').then(function(pdf) {
+                        const blob = pdf.output('blob');
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = 'Plant_Disease_Report.pdf';
+                        document.body.appendChild(a);
+                        a.click();
+                        setTimeout(() => {
+                            document.body.removeChild(a);
+                            URL.revokeObjectURL(url);
+                            document.body.removeChild(tempContainer);
+                        }, 100);
+                    });
+                }
+
+                // Save scan to LocalStorage History
+                document.addEventListener('DOMContentLoaded', () => {
+                    let history = JSON.parse(localStorage.getItem('plantScanHistory')) || [];
+                    
+                    // Avoid saving duplicate page reloads
+                    const currentImagePath = "{{ url_for('static', filename=image_path) }}";
+                    if(history.length === 0 || history[0].image_path !== currentImagePath) {
+                        const scanData = {
+                            date: new Date().toLocaleString(),
+                            image_path: currentImagePath,
+                            plant: "{{ plant.replace('_', ' ') }}",
+                            disease: "{{ disease.replace('_', ' ') }}",
+                            confidence: "{{ primary.confidence }}%"
+                        };
+                        
+                        // Add to beginning of array
+                        history.unshift(scanData);
+                        
+                        // Keep only last 10 scans
+                        if (history.length > 10) {
+                            history = history.slice(0, 10);
+                        }
+                        
+                        localStorage.setItem('plantScanHistory', JSON.stringify(history));
+                    }
+                });
+
+                // Feedback Submission
+                function sendFeedbackData(actualClass) {
+                    const predictedClass = "{{ primary.class }}";
+                    const imagePath = "{{ image_path }}";
+                    
+                    document.getElementById('feedback-actions').style.display = 'none';
+                    document.getElementById('correction-form').style.display = 'none';
+                    document.getElementById('feedback-success').style.display = 'flex';
+                    
+                    fetch('/feedback', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            image_path: imagePath,
+                            predicted_class: predictedClass,
+                            actual_class: actualClass
+                        })
+                    }).catch(err => console.error('Error submitting feedback:', err));
+                }
+                
+                function submitFeedback(predicted) {
+                    sendFeedbackData(predicted);
+                }
+                
+                function submitCorrection() {
+                    const select = document.getElementById('correct-class');
+                    if (!select.value) {
+                        alert('Please select the correct condition.');
+                        return;
+                    }
+                    sendFeedbackData(select.value);
+                }
+            </script>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="medical-footer">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h4>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                            </svg>
+                        </h4>
+                        <p class="footer-description">Empowering agriculture through innovative AI solutions</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 PlantCare AI. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Hidden PDF Template for Export -->
+    <div id="pdf-report-template" style="display: none; background: white; color: black; font-family: sans-serif; width: 800px; padding: 20px;">
+        <div style="text-align: center; border-bottom: 2px solid #10b981; padding-bottom: 10px; margin-bottom: 20px;">
+            <h1 style="color: #10b981; margin: 0; font-size: 26px;">PlantCare AI Report</h1>
+            <p style="color: #666; margin: 5px 0 0 0; font-size: 14px;">Generated on: <span id="pdf-date"></span></p>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 25px;">
+            <!-- TOP: Image -->
+            <div style="margin-bottom: 20px;">
+                <h3 style="margin-top: 0; margin-bottom: 10px; color: #1f2937;">Analyzed Image</h3>
+                <img src="{{ url_for('static', filename=image_path) }}" style="width: 100%; max-width: 350px; max-height: 350px; object-fit: contain; border-radius: 10px; border: 1px solid #e2e8f0;" />
+            </div>
+
+            <!-- BOTTOM: Results -->
+            <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border: 1px solid #e2e8f0; text-align: left; margin: 0 auto; max-width: 600px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2 style="margin: 0; color: #1f2937; font-size: 20px;">Detection Results</h2>
+                    <span style="background: {% if is_healthy %}#d1fae5{% else %}#fee2e2{% endif %}; color: {% if is_healthy %}#065f46{% else %}#991b1b{% endif %}; padding: 6px 12px; border-radius: 20px; font-weight: bold; border: 2px solid {% if is_healthy %}#10b981{% else %}#ef4444{% endif %}; font-size: 13px;">
+                        {% if is_healthy %}✓ Healthy{% else %}⚠ Disease Detected{% endif %}
+                    </span>
+                </div>
+                <p style="margin: 10px 0; font-size: 16px;"><strong>Plant Type:</strong> {{ plant.replace('_', ' ') }}</p>
+                <p style="margin: 10px 0; font-size: 16px;"><strong>Condition:</strong> <span style="color: {% if is_healthy %}#10b981{% else %}#ef4444{% endif %}; font-weight: bold;">{{ disease.replace('_', ' ') }}</span></p>
+                <p style="margin: 10px 0; font-size: 16px;"><strong>Confidence:</strong> {{ primary.confidence }}%</p>
+            </div>
+        </div>
+
+        {% if info %}
+        <!-- Force a clean page break before the text so lines are never sliced in half -->
+        <div class="html2pdf__page-break" style="page-break-before: always;"></div>
+        
+        <div style="font-size: 14px; margin-top: 20px;">
+            <div style="page-break-inside: avoid; margin-bottom: 20px;">
+                <h3 style="color: #3b82f6; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 12px; margin-top: 0; font-size: 20px;">Description</h3>
+                <p style="line-height: 1.6; color: #333; margin: 0; text-align: justify; font-size: 15px;">{{ info.description }}</p>
+            </div>
+            
+            <div style="page-break-inside: avoid; margin-bottom: 20px;">
+                <h3 style="color: #10b981; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 12px; font-size: 20px;">Recommended Treatment</h3>
+                <p style="line-height: 1.6; color: #333; white-space: pre-wrap; margin: 0; text-align: justify; font-size: 15px;">{{ info.treatment }}</p>
+            </div>
+
+            <div style="page-break-inside: avoid; margin-bottom: 20px;">
+                <h3 style="color: #f59e0b; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 12px; font-size: 20px;">Prevention Strategies</h3>
+                <p style="line-height: 1.6; color: #333; white-space: pre-wrap; margin: 0; text-align: justify; font-size: 15px;">{{ info.prevention }}</p>
+            </div>
+        </div>
+        {% endif %}
+        <div style="margin-top: 20px; text-align: center; color: #999; font-size: 12px; border-top: 1px solid #eee; padding-top: 10px;">
+            End of Report - PlantCare AI
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='theme.js') }}"></script>
+</body>
+</html>

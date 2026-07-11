@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlantCare AI - Plant Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+</head>
+
+<body class="home-page">
+    <!-- Navigation -->
+    <nav class="navbar-clean">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="leaf-icon">
+                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z">
+                        </path>
+                        <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+                    </svg>
+                </div>
+                <span class="logo-text">PlantCare AI</span>
+            </div>
+            <ul class="nav-menu-clean">
+                <li><a href="/" class="nav-link active">Home</a></li>
+                <li><a href="/about" class="nav-link">About</a></li>
+                <li><button id="theme-toggle" style="background:transparent; border:1px solid var(--border); border-radius:10px; padding:8px 12px; cursor:pointer; font-size: 1rem;" title="Toggle Dark Mode">🌙</button></li>
+                <li><a href="/upload" class="btn-get-started">Get Started</a></li>
+                <li style="margin-left: 10px; margin-top: 5px;">
+                    <div id="google_translate_element"></div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-clean">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content-clean">
+                    <h1 class="hero-title-clean">
+                        <span class="title-dark">AI-Powered</span>
+                        <span class="title-green">Plant Disease Detection</span>
+                    </h1>
+                    <p class="hero-description">Protect your crops with cutting-edge artificial intelligence. Instant
+                        disease identification for healthier plants and better yields.</p>
+                    <div class="hero-actions">
+                        <a href="/upload" class="btn-upload">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            Upload Image
+                        </a>
+                        <a href="/about" class="btn-learn-more">Learn More</a>
+                    </div>
+                </div>
+                <div class="hero-image-clean">
+                    <img src="https://cdn.pixabay.com/photo/2024/05/02/07/02/plants-8733841_1280.jpg"
+                        alt="Fresh plant leaves" class="hero-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Scans Section -->
+    <section class="recent-scans-section" style="padding: 4rem 0; background-color: #f8fafc; display: none;" id="recent-scans-container">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem; color: #1e293b; font-size: 2rem; font-weight: 700;">Your Recent Scans</h2>
+            <div class="scans-grid" id="scans-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+                <!-- Scans will be injected here by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose">
+        <div class="container">
+            <h2 class="section-heading">Why Choose PlantCare AI?</h2>
+            <div class="features-row">
+                <div class="feature-box">
+                    <div class="feature-icon-circle">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 6v6l4 2"></path>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Instant Detection</h3>
+                    <p class="feature-desc">Get results in seconds with our advanced AI model trained on thousands of
+                        plant images.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon-circle">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">High Accuracy</h3>
+                    <p class="feature-desc">Powered by MobileNetV2 architecture for precise disease identification
+                        across multiple plant species.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon-circle">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Easy to Use</h3>
+                    <p class="feature-desc">Simple interface - just upload a photo and get instant diagnosis. No
+                        technical knowledge required.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-row">
+                <div class="stat-box">
+                    <h3 class="stat-value">38+</h3>
+                    <p class="stat-label">Plant Diseases</p>
+                </div>
+                <div class="stat-box">
+                    <h3 class="stat-value">95%</h3>
+                    <p class="stat-label">Accuracy Rate</p>
+                </div>
+                <div class="stat-box">
+                    <h3 class="stat-value">10+</h3>
+                    <p class="stat-label">Plant Species</p>
+                </div>
+                <div class="stat-box">
+                    <h3 class="stat-value">24/7</h3>
+                    <p class="stat-label">Available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-green">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Protect Your Plants?</h2>
+                <p class="cta-subtitle">Start detecting plant diseases now with our AI-powered system</p>
+                <a href="/upload" class="btn-cta-white">Get Started Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <h3 class="about-heading">About Plant Disease Detection System</h3>
+            <p class="about-text">Our advanced AI-powered platform utilizes state-of-the-art deep learning technology to
+                accurately identify plant diseases in real-time. With a comprehensive database of plant conditions and
+                diseases, we help farmers, gardeners, and agricultural professionals make informed decisions about plant
+                health management.</p>
+
+            <div class="brand-section">
+                <div class="brand-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                    </svg>
+                </div>
+                <div class="brand-info">
+                    <p class="brand-tagline">Empowering agriculture through innovative AI solutions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const history = JSON.parse(localStorage.getItem('plantScanHistory')) || [];
+            const container = document.getElementById('recent-scans-container');
+            const grid = document.getElementById('scans-grid');
+            
+            if (history.length > 0) {
+                container.style.display = 'block';
+                history.slice(0, 4).forEach(scan => {
+                    const card = document.createElement('div');
+                    card.style = "background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; transition: transform 0.2s;";
+                    card.onmouseover = function() { this.style.transform = 'translateY(-5px)'; }
+                    card.onmouseout = function() { this.style.transform = 'translateY(0)'; }
+                    
+                    const isHealthy = scan.disease.toLowerCase().includes('healthy');
+                    const badgeBg = isHealthy ? '#d1fae5' : '#fee2e2';
+                    const badgeColor = isHealthy ? '#059669' : '#dc2626';
+
+                    card.innerHTML = `
+                        <img src="${scan.image_path}" alt="Plant" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div style="padding: 1.2rem;">
+                            <div style="font-size: 0.85rem; color: #64748b; margin-bottom: 0.5rem; display: flex; justify-content: space-between;">
+                                <span>${scan.date}</span>
+                            </div>
+                            <h4 style="margin: 0 0 0.5rem 0; color: #1e293b; font-size: 1.1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.5rem;">${scan.plant}</h4>
+                            <div style="display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; background: ${badgeBg}; color: ${badgeColor}; margin-top: 5px;">
+                                ${scan.disease}
+                            </div>
+                            <div style="margin-top: 0.8rem; font-size: 0.9rem; color: #475569;">
+                                Confidence: <strong style="color: #3b82f6;">${scan.confidence}</strong>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+        });
+    </script>
+    <script src="{{ url_for('static', filename='theme.js') }}"></script>
+</body>
+
+</html>

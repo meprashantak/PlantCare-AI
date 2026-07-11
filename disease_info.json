@@ -1,0 +1,192 @@
+{
+    "Apple___Apple_scab": {
+        "description": "The Apple plant is showing symptoms of Apple scab. This is a common disease affecting Apple crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Apple scab on Apple.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Apple___Black_rot": {
+        "description": "The Apple plant is showing symptoms of Black rot. This is a common disease affecting Apple crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Black rot on Apple.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Apple___Cedar_apple_rust": {
+        "description": "The Apple plant is showing symptoms of Cedar apple rust. This is a common disease affecting Apple crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Cedar apple rust on Apple.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Apple___healthy": {
+        "description": "The Apple plant appears to be healthy and free of major diseases.",
+        "treatment": "No treatment necessary. Continue with regular watering and fertilizing schedules.",
+        "prevention": "Maintain good agricultural practices, ensure proper spacing, and monitor regularly for any signs of pests or disease."
+    },
+    "Blueberry___healthy": {
+        "description": "The Blueberry plant appears to be healthy and free of major diseases.",
+        "treatment": "No treatment necessary. Continue with regular watering and fertilizing schedules.",
+        "prevention": "Maintain good agricultural practices, ensure proper spacing, and monitor regularly for any signs of pests or disease."
+    },
+    "Cherry_(including_sour)___Powdery_mildew": {
+        "description": "The Cherry (including sour) plant is showing symptoms of Powdery mildew. This is a common disease affecting Cherry (including sour) crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Powdery mildew on Cherry (including sour).\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Cherry_(including_sour)___healthy": {
+        "description": "The Cherry (including sour) plant appears to be healthy and free of major diseases.",
+        "treatment": "No treatment necessary. Continue with regular watering and fertilizing schedules.",
+        "prevention": "Maintain good agricultural practices, ensure proper spacing, and monitor regularly for any signs of pests or disease."
+    },
+    "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot": {
+        "description": "The Corn (maize) plant is showing symptoms of Cercospora leaf spot Gray leaf spot. This is a common disease affecting Corn (maize) crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Cercospora leaf spot Gray leaf spot on Corn (maize).\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Corn_(maize)___Common_rust_": {
+        "description": "The Corn (maize) plant is showing symptoms of Common rust . This is a common disease affecting Corn (maize) crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Common rust  on Corn (maize).\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Corn_(maize)___Northern_Leaf_Blight": {
+        "description": "The Corn (maize) plant is showing symptoms of Northern Leaf Blight. This is a common disease affecting Corn (maize) crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Northern Leaf Blight on Corn (maize).\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Corn_(maize)___healthy": {
+        "description": "The Corn (maize) plant appears to be healthy and free of major diseases.",
+        "treatment": "No treatment necessary. Continue with regular watering and fertilizing schedules.",
+        "prevention": "Maintain good agricultural practices, ensure proper spacing, and monitor regularly for any signs of pests or disease."
+    },
+    "Grape___Black_rot": {
+        "description": "The Grape plant is showing symptoms of Black rot. This is a common disease affecting Grape crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Black rot on Grape.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Grape___Esca_(Black_Measles)": {
+        "description": "The Grape plant is showing symptoms of Esca (Black Measles). This is a common disease affecting Grape crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Esca (Black Measles) on Grape.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)": {
+        "description": "The Grape plant is showing symptoms of Leaf blight (Isariopsis Leaf Spot). This is a common disease affecting Grape crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Leaf blight (Isariopsis Leaf Spot) on Grape.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Grape___healthy": {
+        "description": "The Grape plant appears to be healthy and free of major diseases.",
+        "treatment": "No treatment necessary. Continue with regular watering and fertilizing schedules.",
+        "prevention": "Maintain good agricultural practices, ensure proper spacing, and monitor regularly for any signs of pests or disease."
+    },
+    "Orange___Haunglongbing_(Citrus_greening)": {
+        "description": "The Orange plant is showing symptoms of Haunglongbing (Citrus greening). This is a common disease affecting Orange crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Haunglongbing (Citrus greening) on Orange.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Peach___Bacterial_spot": {
+        "description": "The Peach plant is showing symptoms of Bacterial spot. This is a common disease affecting Peach crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Bacterial spot on Peach.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Peach___healthy": {
+        "description": "The Peach plant appears to be healthy and free of major diseases.",
+        "treatment": "No treatment necessary. Continue with regular watering and fertilizing schedules.",
+        "prevention": "Maintain good agricultural practices, ensure proper spacing, and monitor regularly for any signs of pests or disease."
+    },
+    "Pepper,_bell___Bacterial_spot": {
+        "description": "The Pepper, bell plant is showing symptoms of Bacterial spot. This is a common disease affecting Pepper, bell crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Bacterial spot on Pepper, bell.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Pepper,_bell___healthy": {
+        "description": "The Pepper, bell plant appears to be healthy and free of major diseases.",
+        "treatment": "No treatment necessary. Continue with regular watering and fertilizing schedules.",
+        "prevention": "Maintain good agricultural practices, ensure proper spacing, and monitor regularly for any signs of pests or disease."
+    },
+    "Potato___Early_blight": {
+        "description": "The Potato plant is showing symptoms of Early blight. This is a common disease affecting Potato crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Early blight on Potato.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Potato___Late_blight": {
+        "description": "The Potato plant is showing symptoms of Late blight. This is a common disease affecting Potato crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Late blight on Potato.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Potato___healthy": {
+        "description": "The Potato plant appears to be healthy and free of major diseases.",
+        "treatment": "No treatment necessary. Continue with regular watering and fertilizing schedules.",
+        "prevention": "Maintain good agricultural practices, ensure proper spacing, and monitor regularly for any signs of pests or disease."
+    },
+    "Raspberry___healthy": {
+        "description": "The Raspberry plant appears to be healthy and free of major diseases.",
+        "treatment": "No treatment necessary. Continue with regular watering and fertilizing schedules.",
+        "prevention": "Maintain good agricultural practices, ensure proper spacing, and monitor regularly for any signs of pests or disease."
+    },
+    "Soybean___healthy": {
+        "description": "The Soybean plant appears to be healthy and free of major diseases.",
+        "treatment": "No treatment necessary. Continue with regular watering and fertilizing schedules.",
+        "prevention": "Maintain good agricultural practices, ensure proper spacing, and monitor regularly for any signs of pests or disease."
+    },
+    "Squash___Powdery_mildew": {
+        "description": "The Squash plant is showing symptoms of Powdery mildew. This is a common disease affecting Squash crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Powdery mildew on Squash.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Strawberry___Leaf_scorch": {
+        "description": "The Strawberry plant is showing symptoms of Leaf scorch. This is a common disease affecting Strawberry crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Leaf scorch on Strawberry.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Strawberry___healthy": {
+        "description": "The Strawberry plant appears to be healthy and free of major diseases.",
+        "treatment": "No treatment necessary. Continue with regular watering and fertilizing schedules.",
+        "prevention": "Maintain good agricultural practices, ensure proper spacing, and monitor regularly for any signs of pests or disease."
+    },
+    "Tomato___Bacterial_spot": {
+        "description": "The Tomato plant is showing symptoms of Bacterial spot. This is a common disease affecting Tomato crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Bacterial spot on Tomato.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Tomato___Early_blight": {
+        "description": "The Tomato plant is showing symptoms of Early blight. This is a common disease affecting Tomato crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Early blight on Tomato.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Tomato___Late_blight": {
+        "description": "The Tomato plant is showing symptoms of Late blight. This is a common disease affecting Tomato crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Late blight on Tomato.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Tomato___Leaf_Mold": {
+        "description": "The Tomato plant is showing symptoms of Leaf Mold. This is a common disease affecting Tomato crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Leaf Mold on Tomato.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Tomato___Septoria_leaf_spot": {
+        "description": "The Tomato plant is showing symptoms of Septoria leaf spot. This is a common disease affecting Tomato crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Septoria leaf spot on Tomato.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Tomato___Spider_mites Two-spotted_spider_mite": {
+        "description": "The Tomato plant is showing symptoms of Spider mites Two-spotted spider mite. This is a common disease affecting Tomato crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Spider mites Two-spotted spider mite on Tomato.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Tomato___Target_Spot": {
+        "description": "The Tomato plant is showing symptoms of Target Spot. This is a common disease affecting Tomato crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Target Spot on Tomato.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Tomato___Tomato_Yellow_Leaf_Curl_Virus": {
+        "description": "The Tomato plant is showing symptoms of Tomato Yellow Leaf Curl Virus. This is a common disease affecting Tomato crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Tomato Yellow Leaf Curl Virus on Tomato.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Tomato___Tomato_mosaic_virus": {
+        "description": "The Tomato plant is showing symptoms of Tomato mosaic virus. This is a common disease affecting Tomato crops that can reduce yield if left untreated.",
+        "treatment": "1. Remove and destroy infected plant parts immediately.\n2. Apply appropriate fungicides or bactericides labeled for Tomato mosaic virus on Tomato.\n3. Ensure good air circulation around the plants.",
+        "prevention": "1. Practice crop rotation.\n2. Use disease-resistant varieties if available.\n3. Avoid overhead watering to keep foliage dry.\n4. Sanitize garden tools regularly."
+    },
+    "Tomato___healthy": {
+        "description": "The Tomato plant appears to be healthy and free of major diseases.",
+        "treatment": "No treatment necessary. Continue with regular watering and fertilizing schedules.",
+        "prevention": "Maintain good agricultural practices, ensure proper spacing, and monitor regularly for any signs of pests or disease."
+    }
+}
